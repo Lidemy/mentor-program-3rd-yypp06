@@ -1,13 +1,12 @@
 function stars(n) {
-  for (let i = 1; i <= n; i + 1) {
-    let newStar = '';
-    for (let j = 1; j <= i; j + 1) {
-      newStar += '*';
-    }
-    const starArray = newStar.split(',');
-    console.log(starArray);
+  let starArry = [];
+  let star = '';
+  for (let i = 1; i <= n; i += 1) {
+    star += '*';
+    starArry = starArry.concat(star);
   }
+  return starArry;
 }
-stars(3);
+console.log(stars(5));
 
 module.exports = stars;

@@ -4,10 +4,9 @@ function isPalindromes(str) {
   const joinString = reverseStr.join('');
 
   if (str === joinString) {
-    console.log(true);
-  } else {
-    console.log(false);
+    return true;
   }
+  return false;
 }
 isPalindromes('111111');
 isPalindromes('lalalal');
