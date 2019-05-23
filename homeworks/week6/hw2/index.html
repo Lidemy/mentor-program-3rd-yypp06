@@ -197,6 +197,17 @@
             margin-top: 10%;
             cursor: pointer;
         }
+        .clap{
+            position: fixed;
+            width: 179px;
+            height: 170px;
+            top: 27%;
+            left: 20%;
+        }
+        .clap img{
+            position: fixed;
+            cursor: pointer;
+        }
 
 
 
@@ -224,7 +235,10 @@
                 line-height: 37px;
             }
             .innerText img{
-                    margin: 9px 0 0 6%;
+                margin: 9px 0 0 6%;
+            }
+            .wrapper{
+                display: block;
             }
             .wrapper p{
                 margin: -24px 15px 0px 25px;
@@ -289,6 +303,11 @@
                 display: block;
                 padding: 0 0 0 9px;
 
+            }
+        }
+        @media screen and (max-width: 1200px){
+            .clap{
+                display: none;
             }
         }
 
@@ -407,6 +426,7 @@
             <div><img src="box1.png"></div>
         </div>
     </div>
+    <div class="clap"><img src="clap2.png"></div>
 
 </body>
 </html>
