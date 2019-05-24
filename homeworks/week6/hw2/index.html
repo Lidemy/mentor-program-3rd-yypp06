@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta chartset = "UTF-8" />
+    <meta name = "viewport" content = "width=device-width, initial-scale=1" />
+
+    <title>hw2</title>
+    <style>
+        body{
+            margin: 0; 
+            width: 100%;
+        }
+        nav {
+            display: flex;
+            justify-content: space-around;
+            border-bottom-color: #E3E3E3;
+            border-bottom-width: 1px;
+            border-bottom-style: solid;
+        }
+        .menu{
+            display: flex;
+            border-bottom-color: #E3E3E3;
+            border-bottom-width: 1px;
+            border-bottom-style: solid;
+            box-shadow: 10px 3px 9px rgba(0, 0, 0, 0.17);
+        }
+        .menu img{
+            padding-left: 22.5%;
+            padding-right: 1%;
+            width: 158px;
+        }
+        .menu_link{
+            padding: 19px 21px 21px 31px;
+            font-size: 12px;
+            color: #8e9895;
+        }
+        .menu_link:hover{
+            color: black;
+            cursor: pointer;
+        }
+        .content{
+            max-width: 960px;
+            margin: 0 auto;
+        }
+        .content img{
+            min-width: 55%;
+            height: auto;
+        }
+        .wapper{
+            margin: 0 auto;
+            padding-top: 25px;
+        }
+        .date{
+            color: #989898;
+        }
+        .title{
+            font-size: 42px;
+            margin: 2% 31% 0 32%;
+            font-family: serif;
+        }
+        .wrapper p{
+            font-size: 23px;
+            margin: 0% 31% 1% 32%;
+            color: #444040;
+            font-family: sans-serif;
+        }
+        .author{
+            margin: 0 0 2% 31%;
+            display: -webkit-inline-box;
+        }
+        .author_box{
+            margin: 7px 0 0 0;
+            font-size: 14px;
+        }
+        .author_name:hover{
+            text-decoration:underline;
+            cursor: pointer;
+        }
+        .btn{
+            border-width: 1px;
+            border-radius: 6px;
+            border-color: #5954ab;
+            border-style: solid;
+            margin: 4px 9px 45px 1px;
+            padding: 2px 12px 3px 12px;
+            font-size: 10px;
+            color: #5954ab;
+            cursor: pointer;
+        }
+        .pic_way{
+            text-align: center;
+        }
+        .innerText{
+            margin: 70px auto;
+            max-width: 960px;
+        }
+        .innerText p{
+            font-size: 19px;
+            margin: 0% 12% 1% 15%;
+            line-height: 38px;
+            font-family: sans-serif;
+            color: black;
+        }
+        .innerText img{
+            float: left;
+            margin: 9px 0 0 14%;
+        }
+        .label{
+            display: inline-block;
+            margin: 0% 35% 0 14%;             
+        }
+        .label div{
+            display: inline-block;
+            background-color: #e3e3e385;
+            padding: 6px 10px 8px 9px;
+            border-radius: 7px;
+            font-size: 9px;
+            margin: 10px 0 0 2px;
+        }
+        .label div:hover {
+            background-color: #e3e3e3;
+            cursor: pointer;
+        }
+        .icon{
+            display: flex;
+            margin: 1% 0 0 -25%;
+            justify-content: space-evenly;
+        }
+        .icon_clap{
+            width: 60px;
+            height: 60px;
+            border-color: #b5d0ff;
+            border-style: solid;
+            border-radius: 40px;
+            border-width: 1px;
+            margin: 12px 0 0 13%;
+        }
+        .icon_clap:hover{
+            border-color: #194590;
+            cursor: pointer;
+        }
+
+        .clap_num{
+            margin: 3% 23px 0 -18%;
+            font-size: 9px;
+        }
+        .icon_share img{
+            margin: 8% 0 0 51%;
+        }
+        #shareBox{
+            margin: 0% -14% 5% 0%;
+        }
+        #shareBox.author2{
+            margin: 0 0 0 -4%;
+        }
+        #shareBox .btn{
+            padding: 7px 22px 9px 18px;
+            margin:  4px 9px 71px 1px;
+            cursor: pointer;
+        }
+        .author_content{
+            display: flex;
+            justify-content: space-around;
+            border-top: #00000030;
+            border-top-style: solid;
+            border-width: 0.7px;
+            padding-top: 20px;
+            margin-top: 22px;
+        }
+        .author_content .author_name{
+            font-size: 17px;
+        }
+        .author_content .author_box{
+            width: 160px;
+        }
+        #shareBox img{
+            margin: 0 0 0 17px;
+            float: none;
+        }
+        #shareBox .date{
+            color: #989898;
+        }
+        #shareBox.author2 .btn{
+            padding: 7px 19px 4px 18px;
+            margin: 0 0 122px 0;
+        }
+        .recommend{
+            display: flex;
+            justify-content: center;
+            background-color: #FAFAFA;
+            width: 100%;
+            height: 500px;
+            margin-top: -5%;
+        }
+        .recommend img{
+            padding: 0 5px 0 5px;
+            margin-top: 10%;
+            cursor: pointer;
+        }
+        .clap{
+            position: fixed;
+            width: 179px;
+            height: 170px;
+            top: 27%;
+            left: 20%;
+        }
+        .clap img{
+            position: fixed;
+            cursor: pointer;
+        }
+
+
+
+        @media screen and (max-width: 750px){
+            nav{
+                display: flex;
+                justify-content: space-between;
+            }
+            .menu_link{
+                display: none;
+            }
+            .menu img{
+                width: 45%;
+                height: auto;
+                float: left;
+                padding: 0;
+            }
+            .content img{
+                width: 100%;
+                height: 35%;
+            }
+            .title{
+                font-size: 35px;
+                margin: 27px;
+                line-height: 37px;
+            }
+            .innerText img{
+                margin: 9px 0 0 6%;
+            }
+            .wrapper{
+                display: block;
+            }
+            .wrapper p{
+                margin: -24px 15px 0px 25px;
+                font-size: 17px;
+                line-height: 27px;
+                color: #444040;
+            }
+            .author{
+                margin: 0 0 2% 5%;
+                display: flex;
+            }
+            .label{
+                margin: 0% 0% 0 5%;
+                max-width: 960px;
+
+            }
+            .label div{
+                padding: 6px 10px 8px 9px;
+            }
+            .icon_clap{
+                margin: 3% 0 0 25%;
+            }
+            .icon_clap img{
+                margin: 9px 0 0 14%;
+            }
+
+            .clap_num{
+                margin: 7% 0 0 0%;
+       
+            }
+            .icon_share img{
+                margin: 11% 0% 0% 0%;
+            }
+            .author_content{
+                display: initial;
+            }
+            #shareBox{
+                border-top-style: solid;
+                border-width: 0.7px;
+                padding-top: 20px;
+                border-top-color: #a5686830;
+                margin: 4% 5% 5% -3%;
+            }
+            #shareBox img{
+                margin: -5px -3px -12px 13px;
+                padding: 5px 0px 46px 11px;
+                float: none;
+            }
+            #shareBox .btn{
+                margin: 7px 17px 75px 6px;
+                padding: 6px 15px 6px 14px;
+            }
+            .author_content .author_box{
+                margin: 7px 0 0 8%;
+                font-size: 14px;
+            }
+            #shareBox.author2 .btn{
+                padding: 7px 19px 6px 16px;
+                margin: 0 0 71px 0;
+            }
+            .recommend{
+                display: grid;
+                height: auto;
+
+            }
+        }
+        @media screen and (max-width: 1200px){
+            .clap{
+                display: none;
+            }
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+    <nav>
+        <img src="logo.png">
+        <img src="logo2.png">
+    </nav>
+    <div class="menu">
+            <img src="oneZero.png">
+            <div class="menu_link">CONSUMER TECH</div>
+            <div class="menu_link">DIGITAL LIFE</div>
+            <div class="menu_link">INDUSTRY</div>
+            <div class="menu_link">SCIENCE & MEDICINE</div>
+            <div class="menu_link">ABOUT</div>
+    </div>
+    <div class="wrapper">
+        <div class="title">Scientists Release the First Image of a Massive Black Hole</div>
+        <p>Here’s how they did it</p>
+        <div class="author">
+            <img src="author.png">
+            <div class="author_box"> 
+                <div class="author_name">Shannon Stirone</div>
+                <div class="date">Apr 11．4 min read</div>
+            </div>
+            <div class="btn">Follow</div>
+        </div>
+        <div class="content">
+            <img src="blackHole.png"> 
+            <div class="pic_way">Credit: Handout/Getty Images</div>
+        </div>
+        <div class="innerText">
+            <img src="of.png">
+            <p>
+                all the enigmatic phenomena in our universe, there’s perhaps one
+                that has captured our attention and imagination the most, even 
+                though we had never actually seen one: the black hole. These 
+                space objects are so dense that even light cannot escape their 
+                grip. Ever since Einstein first proposed their existence, we’ve 
+                made simulations, art, and CGI versions of what we imagine 
+                black holes could look like. But it wasn’t until this morning 
+                that we saw a black hole for the first time. We have finally 
+                gazed into the cosmic abyss.<br>
+                <br>
+                On Wednesday morning, teams of scientists around the world who 
+                work on an experiment called the Event Horizon Telescope released 
+                a much anticipated image of the ultramassive black hole at the center 
+                of the M87 galaxy. This galaxy is 55 million light-years away in
+                the Virgo supercluster, and it is 6.5 billion times more massive 
+                than our sun. “You’re looking at a black hole that is essentially
+                the size of our entire solar system,” says Sera Markoff, EHT team 
+                member and professor of theoretical astrophysics at the University
+                of Amsterdam.<br>
+                <br>
+                Capturing an image of a black hole is exceedingly difficult. 
+                It’s not like taking a photo of a planet, or a cluster of stars, 
+                or even another galaxy. It’s not as simple as using the Hubble
+                Space Telescope. “We never thought this was possible,” says 
+                Priyamvada Natarajan, professor of astronomy and physics at Yale 
+                University.<br>
+                <br>
+                Natarajan is not involved with the EHT team, but she’s been 
+                studying black holes for nearly 20 years. “We’re in the grip of 
+                a black hole!” she said, hardly able to contain her excitement. 
+                She and many others in her field have waited years for this data. 
+                It did not disappoint.<br>
+                <br>
+                The Event Horizon Telescope is an array of radio telescopes 
+                around the world that are collectively so powerful that together 
+                they create a telescope as large as the Earth. The images and 
+                data they produce are so massive that the scientists had to wait 
+                to capture the images until hard drives existed that could hold 
+                all the information. “It is a huge technical feat,” says Natarajan.<br>
+                <br>
+            </p>
+            <div class="label">
+                <div>Space</div>
+                <div>Science And Medicine</div>
+                <div>Black Holes</div>
+                <div>Astrophysics</div>
+                <div>Galaxy</div>
+            </div>
+            <div class="icon">
+                <div class="icon_clap"><img src="clap.png"></div>
+                <div class="clap_num">3K clap</div>
+                <div class="icon_share"><img src="share.png"></div>
+            </div>
+            <div class="author_content"> 
+                <div class="author" id="shareBox">
+                    <img src="author.png">
+                    <div class="author_box"> 
+                        <div class="author_name">Shannon Stirone</div>
+                        <div class="date">Medium member since Jan 2019</div>
+                        <div class="date2">Freelance writer in the Bay Area</div>
+                    </div>
+                    <div class="btn">Follow</div>
+                </div>
+                <div class="author author2" id="shareBox">
+                    <img src="OZ.png">
+                    <div class="author_box"> 
+                        <div class="author_name">OneZero</div>
+                        <div class="date2">Tech, science, and the frontlines of the future</div>
+                    </div>
+                    <div class="btn">Follow</div>
+                </div>
+            </div>
+        </div>
+        <div class="recommend">
+            <div><img src="box3.png"></div>
+            <div><img src="box2.png"></div>
+            <div><img src="box1.png"></div>
+        </div>
+    </div>
+    <div class="clap"><img src="clap2.png"></div>
+
+</body>
+</html>
