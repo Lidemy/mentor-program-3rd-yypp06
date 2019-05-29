@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>week7 hw1</title>
+</head>
+<style>
+    body{
+        margin: 0; 
+    }
+    .content {
+        background-color: white;
+        width: 100vw;
+        height: 100vh;
+        margin: 0 auto;
+        position: relative;
+    }
+    .contentColor{
+        background-color: #13fb7099;
+    }
+    button{
+        background-color: white;
+        border-radius: 20px;
+        margin: auto;
+        width: 230px;
+        height: 44px;
+        font-size: 28px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+    }
+    div .title{
+        font-size: 40px;
+        position: absolute;
+        width: 240px;
+        height: 200px;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        margin: auto;
+    }
+</style>
+<body>
+    <div class="content">
+        <div class="title">變色時請點擊</div>
+        <button>
+            start
+        </button>
+    </div>
+<script>
+    const content = document.querySelector('.content')
+    const start = document.querySelector('button')
+    
+    start.onclick = function() { 
+        start.style.display = "none";
+        startGame();
+
+    }
+
+    function startGame() {
+        var time = Math.random();  
+        time *= 3000;  
+        setTimeout(play, time);
+
+    } //3000毫秒裡隨機變色
+
+    function play() {
+        content.classList.add('contentColor');
+        const contentColor = document.querySelector('.contentColor')
+        createdTime = Date.now();
+        contentColor.addEventListener("click", score);
+         
+    } 
+
+    function score(){
+        clickedTime = Date.now();
+        reactionTime = (clickedTime - createdTime) / 1000;
+        alert(reactionTime);
+        content.classList.remove('contentColor');
+        content.removeEventListener("click", score);
+    }
+
+     
+             
+     
+             
+            
+
+           
+             
+            
+         
+
+    function exit() {
+        content.classList.remove('contentColor');
+
+    }
+
+     
+
+
+     
+      
+
+
+
+</script>
+</body>
+</html>
