@@ -29,6 +29,8 @@
         top: 0;
         bottom: 0;
         right: 0;
+        cursor: pointer;
+        display: block;
     }
     div .title{
         font-size: 40px;
@@ -45,67 +47,70 @@
 <body>
     <div class="content">
         <div class="title">變色時請點擊</div>
-        <button>
-            start
-        </button>
     </div>
+    <button>
+            start
+    </button>
 <script>
     const content = document.querySelector('.content')
     const start = document.querySelector('button')
-    
+    let checkGame = false
+    let createdTime = null
+    let clickedTime = null
+    let reactionTime = null
+
+
     start.onclick = function() { 
         start.style.display = "none";
         startGame();
-
     }
 
     function startGame() {
-        var time = Math.random();  
-        time *= 3000;  
-        setTimeout(play, time);
+        checkGame = false
+        clickedTime = null
+        timer = setTimeout(() => {
+            content.classList.add('contentColor');
+            clickedTime = new Date()
+        }, Math.random() * 2000 + 1000)
 
-    } //3000毫秒裡隨機變色
-
-    function play() {
-        content.classList.add('contentColor');
-        const contentColor = document.querySelector('.contentColor')
-        createdTime = Date.now();
-        contentColor.addEventListener("click", score);
          
-    } 
+    
+   
+        content.addEventListener('click', function() {
+
+          if (checkGame) return
+          if (!clickedTime) {
+            clearTimeout(timer)
+            alert('還沒變色喔，失敗！')
+          } else {
+            score()
+
+          }
+          checkGame = true
+          start.style.display = "block";
+        })
+
+
+
+    }
+
+
 
     function score(){
-        clickedTime = Date.now();
-        reactionTime = (clickedTime - createdTime) / 1000;
-        alert(reactionTime);
+        checkGame = false
+        createdTime = new Date()
+        reactionTime = ((createdTime - clickedTime) / 1000).toFixed(2);
+        alert('你的反應時間 ' + reactionTime + ' 秒')
         content.classList.remove('contentColor');
         content.removeEventListener("click", score);
-    }
-
-     
-             
-     
-             
-            
-
-           
-             
-            
-         
-
-    function exit() {
-        content.classList.remove('contentColor');
 
     }
 
+
+ 
      
-
-
      
       
-
-
-
 </script>
 </body>
 </html>
