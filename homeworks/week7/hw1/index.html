@@ -14,9 +14,6 @@
         margin: 0 auto;
         position: relative;
     }
-    .contentColor{
-        background-color: #13fb7099;
-    }
     button{
         background-color: white;
         border-radius: 20px;
@@ -59,7 +56,7 @@
     let clickedTime = null
     let reactionTime = null
 
-
+// 按下開始鍵才開始
     start.onclick = function() { 
         start.style.display = "none";
         startGame();
@@ -68,14 +65,31 @@
     function startGame() {
         checkGame = false
         clickedTime = null
+//三秒內隨機變色
         timer = setTimeout(() => {
-            content.classList.add('contentColor');
+            setRandomColor()
             clickedTime = new Date()
         }, Math.random() * 2000 + 1000)
 
+// 隨機變色
+        function getRandomColor() {
+              var letters = '0123456789ABCDEF';
+              var color = '#';
+              for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+              }
+              return color;
+            }
+
+
+            function setRandomColor() {
+              content.style.backgroundColor = getRandomColor();
+            }
+             
+
          
     
-   
+// 判斷是否開始遊戲
         content.addEventListener('click', function() {
 
           if (checkGame) return
@@ -93,18 +107,18 @@
 
 
     }
-
-
-
+//  反應秒數
     function score(){
         checkGame = false
         createdTime = new Date()
         reactionTime = ((createdTime - clickedTime) / 1000).toFixed(2);
         alert('你的反應時間 ' + reactionTime + ' 秒')
-        content.classList.remove('contentColor');
+        content.style.backgroundColor = 'white';
         content.removeEventListener("click", score);
 
     }
+
+ 
 
 
  
