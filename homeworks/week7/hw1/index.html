@@ -46,7 +46,7 @@
         <div class="title">變色時請點擊</div>
     </div>
     <button>
-            start
+        start
     </button>
 <script>
     const content = document.querySelector('.content')
@@ -73,18 +73,18 @@
 
 // 隨機變色
         function getRandomColor() {
-              var letters = '0123456789ABCDEF';
-              var color = '#';
-              for (var i = 0; i < 6; i++) {
+            var letters = '0123456789ABCDEF';
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
                 color += letters[Math.floor(Math.random() * 16)];
-              }
-              return color;
+            }
+                return color;
             }
 
 
-            function setRandomColor() {
-              content.style.backgroundColor = getRandomColor();
-            }
+        function setRandomColor() {
+            content.style.backgroundColor = getRandomColor();
+        }
              
 
          
@@ -92,16 +92,16 @@
 // 判斷是否開始遊戲
         content.addEventListener('click', function() {
 
-          if (checkGame) return
-          if (!clickedTime) {
-            clearTimeout(timer)
-            alert('還沒變色喔，失敗！')
-          } else {
-            score()
+            if (checkGame) return
+            if (!clickedTime) {
+                clearTimeout(timer)
+                alert('還沒變色喔，失敗！')
+            } else {
+                score()
 
-          }
-          checkGame = true
-          start.style.display = "block";
+            }
+            checkGame = true
+            start.style.display = "block";
         })
 
 
@@ -118,10 +118,6 @@
 
     }
 
- 
-
-
- 
      
      
       

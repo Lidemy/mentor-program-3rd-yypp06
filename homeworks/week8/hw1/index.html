@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>week8 hw1</title>
+</head>
+<style>
+    body{
+        margin: 0; 
+        background-color: #f3baba;
+    }
+    .header{
+        text-align: center;
+        font-size: 80px;
+        color: #f51b1b;
+        padding: 2% 0 0 2%;
+    }
+    button{
+        background-color: white;
+        border-radius: 20px;
+        margin: auto;
+        width: 230px;
+        height: 44px;
+        font-size: 28px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        cursor: pointer;
+        display: block;
+    }
+    .contant{
+        background: url(sky.png);
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        width: 100vw;
+        height: 100vh;
+        margin: 0 auto;
+    }
+
+    @-webkit-keyframes rotate-l{
+        0%{margin :18% 0 0 67%;}
+        25%{margin:14% 0 0 50%;}
+        50%{margin:8% 0 0 36%;}
+        100%{display:none;}
+    }
+    @-moz-keyframes rotate-l{
+        0%{margin :18% 0 0 67%;}
+        25%{margin:14% 0 0 50%;}
+        50%{margin:8% 0 0 36%;}
+        100%{display:none;}
+    }
+    @-ms-keyframes rotate-l{
+        0%{margin :18% 0 0 67%;}
+        25%{margin:14% 0 0 50%;}
+        50%{margin:8% 0 0 36%;}
+        100%{display:none;}
+    }
+    @-o-keyframes rotate-l{
+        0%{margin :18% 0 0 67%;}
+        25%{margin:14% 0 0 50%;}
+        50%{margin:8% 0 0 36%;}
+        100%{display:none;}
+    }
+
+    .pic img{
+        width: 33%;
+        height: 500px;
+        animation: 10s linear 0s infinite rotate-l;
+        -webkit-animation: 5s linear 0s infinite rotate-l;
+    }
+    .pic2 img{
+        margin: 2% 0 0 31%;
+        width: 37%;
+    }
+    .crycry{
+        background-color: black;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        width: 100vw;
+        height: 100vh;
+        margin: 0 auto;
+        color: white;
+        font-size: 90px;
+        text-align: center;
+        padding-top: 20%;
+    }
+
+
+
+
+</style>
+<body>
+    <div class="wrap">
+        <button>抽獎</button>
+    </div>
+    
+</body>
+<script>
+    const api = 'https://dvwhnbka7d.execute-api.us-east-1.amazonaws.com/default/lottery'
+    const request = new XMLHttpRequest();
+    const start = document.querySelector('button')
+
+    start.onclick = function() { 
+        start.style.display = "none";
+         
+     
+        if ( request.readyState == 4 && request.status == 200 ) {
+            let data = JSON.parse(request.responseText);
+            let wrap = document.querySelector('.wrap');
+
+
+            if (data.prize == 'NONE') {
+                wrap.innerHTML = `<div class="crycry">銘謝惠顧</div>`
+                 
+            
+            }else if (data.prize == 'FIRST'){
+                wrap.innerHTML = 
+                    `<div class="contant"> 
+                        <div class="header">恭喜你中頭獎了！ <br> 日本東京來回雙人遊！</div>
+                        <div class="pic"><img src="airplane.png"></div>
+                    </div>`
+            }else if (data.prize == 'SECOND'){
+                wrap.innerHTML = 
+                   `<div class="header">二獎！ <br> 90 吋電視一台！</div>
+                    <div class="pic2"><img src="TV.png"></div>`
+            }else if (data.prize == 'THIRD'){
+                wrap.innerHTML = 
+                   `<div class="header">恭喜你抽中三獎 <br> 知名 YouTuber 簽名握手會入場券一張！</div>
+                    <div class="pic2"><img src="https://s.yimg.com/uu/api/res/1.2/LGQc4dUaYFvUlLtgnR_mgg--~B/aD00MDA7dz02MDA7c209MTthcHBpZD15dGFjaHlvbg--/http://media.zenfs.com/zh-Hant_TW/News/YahooOmg/20180921165140_omg_daai_809952.jpg"></div>`
+            }
+        } else{
+            alert('系統不穩定，請再試一次')
+            start.style.display = "block";
+        }
+    }
+
+    request.open('GET', api, true)
+    request.send()
+
+</script>
+</html>
