@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<style>
+    .commentBox{
+        margin: 0 auto; 
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .addComment{
+        width: 500px;
+        height: 200px;
+         
+         
+    }
+    textarea{
+        width: 99%;
+        height: 200px;
+        margin-top: 2px;
+        border-radius: 5px;
+        font-size: 20px;
+    }
+    textarea::-webkit-input-placeholder {
+        font-size: 20px;
+    }
+    button{
+        background-color: white;
+        border-radius: 10px;
+        margin: 2% 0 0 76%;
+        width: 100px;
+        height: 35px;
+        font-size: 20px;
+    }
+     
+    .wrap{
+         
+    }
+    .content{
+        width: 500px;
+        height: 140px;
+        margin: 10px auto;
+        border: 1px solid;
+        border-radius: 15px;
+    }
+    .name{
+        margin: 3% 0 0 0;
+        font-size: 20px;
+        border-bottom: 1px solid;
+        padding: 0 0 0 7%;
+    }
+    .comment{
+        margin: 3% 0 0 0;
+        font-size: 15px;
+        padding: 0 0 0 7%;
+    }
+
+
+
+</style>
+<body>
+    <div class="commentBox"> 
+        <div class="addComment">
+            <textarea class="text" placeholder="留言內容"></textarea>
+            <button>送出</button>
+            <div class="wrap"></div>    
+        </div>
+    </div>
+
+
+<script>
+
+    const api = 'https://lidemy-book-store.herokuapp.com/posts';
+    const request = new XMLHttpRequest();
+    const wrap = document.querySelector('.wrap');
+    const sub = document.querySelector('button');
+    const body = document.querySelector('body');
+    const addComment = document.querySelector('.addComment');
+     
+     
+
+    request.onload = () => {
+
+        if ( request.status < 400 && request.status >= 200 ) {
+            let data = JSON.parse(request.responseText);
+             
+            for (var i = data.length - 1 ; i >= 0; i-= 1) {
+                const div = document.createElement('div');
+                div.classList.add('content');
+                div.innerHTML = `
+                    <div class="name"> ID : ${data[i].id}</div>
+                    <div class="comment"> 留言內容 : ${data[i].content}</div>
+                    `;
+                 
+                wrap.appendChild(div);
+
+             }
+              
+            
+             
+        }else{
+            console.log('err');
+        }
+    }
+    request.open('GET', api, true);
+    request.send();
+     
+
+
+
+
+
+    sub.onclick = () => {
+         
+        let form = document.querySelector('textarea');
+        let value = form.value;
+        let requestPost = new XMLHttpRequest();
+        let data = JSON.parse(request.responseText);
+
+
+        requestPost.onload = () => {
+
+            if ( request.status < 400 && request.status >= 200 ) {
+                deleteOldCommen();  
+                form.value = "";  
+                request.open('GET', api, true); //
+                request.send();
+            }else{
+                alert('err');
+            }
+        }
+        // 舊的不去，新的疊在下面
+
+
+        requestPost.open('POST','https://lidemy-book-store.herokuapp.com/posts', true);
+        requestPost.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+        requestPost.send(JSON.stringify({"content": value}));
+
+        
+    }
+         
+
+
+    let deleteOldCommen = () =>{
+
+        wrap.innerHTML = ""; 
+    
+    }
+        
+    
+ 
+
+     
+
+
+
+ 
+
+
+
+
+
+</script>
+</body>
+</html>
